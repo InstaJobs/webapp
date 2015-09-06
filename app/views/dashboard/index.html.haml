@@ -1,0 +1,41 @@
+%div{"ng-app" => 'instajob'}
+	%div{"id" => "username", "style" => "display:none"}
+		= @user_name
+	%div{"id" => "userjobsc", "style" => "display:none"}
+		= @user_jobcount
+	%div{"id" => "userjobm", "style" => "display:none"}
+		= @matches
+	%div{"id" => "propic", "style" => "display:none"}
+		= @propic
+	%div{"id" => "thumb", "style" => "display:none"}
+		= @thumb
+	%div{"id" => "email", "style" => "display:none"}
+		= @email
+	%div{"id" => "number", "style" => "display:none"}
+		= @number
+
+	%home-nav
+
+	.container.mainContainer{"ng-controller" => 'mainCtrl'}
+		.row{'ui-view' => ''}
+
+	.container.footer
+		.row.text-center
+			.col-md-12.social
+				%a.facebook{:href => "https://www.facebook.com/instajobsnow"}
+					%i{:class => "fa fa-facebook fa-lg"}
+				%a.linkedin{:href => "https://www.linkedin.com/company/insta-jobs"}
+					%i{:class => "fa fa-linkedin fa-lg"}
+		.row.text-center
+			.col-md-12.company
+				InstaJobs &copy; 2015
+		.row.text-center
+			.col-md-12.links
+				%span
+					%a{"href" => "http://www.iubenda.com/privacy-policy/806234", :target => "_blank"}
+						Privacy Policy
+					|
+				%span
+					%a{"href" => "mailto:support@instajobs.io", :target => "_blank"}
+						Send Feedback
+

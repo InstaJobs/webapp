@@ -1,0 +1,10 @@
+%div.mainContent{"style" => "background-color:#EBE9EA; width: 100%"}
+	%p{"style" => "text-align:center"}
+		%img{'src' => 'http://intajobs.com/assets/images/logo-sm.png'}
+	.content{"style" => "background-color:#fff;width: 40em;margin:auto;border-radius:1em;"}
+		%p.head{"style" => "background-color:#0F2938;color:#fff;text-align:center;padding-top:1em;padding-bottom:1em;"}
+			Email Verify Link
+		%div
+			%p{:style => "text-align:center"}
+				%a{:href => @link, :style=>"text-decoration:none;background-color:#C11A2F;color:#fff;border-radius:1px;padding:0.5em;"}
+					=@link

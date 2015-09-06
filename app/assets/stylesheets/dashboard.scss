@@ -1,0 +1,522 @@
+// Place all the styles related to the Dashboard controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.modal-body{
+	background-color: $job-div-back;
+}
+.mainContainer{
+	min-height: 55em;
+}
+.mainNav{
+	.thumb{
+		border-radius: 100%;
+	}
+	background-color: $nav-back;
+	button.navbar-toggle{
+		background-color: #000;
+		span.icon-bar{
+			background-color: $primary-color;
+		}
+	}
+	.connectlinks{
+		padding-top: 0.5em;
+	}
+	.navbar-header{
+		a:first-child{
+			img{
+				padding-top: 0.5em;
+			}
+			padding-left: 1em;
+		}
+	}
+	.links{
+		padding-top: 1em;
+	}
+	.navbar-collapse.collapse{
+		a{
+			cursor: pointer;
+			font-family: $font-family;
+			color: #fff;
+			// border-right: 1px solid #000;
+			&:hover{
+				color: $primary-color;
+			}
+		}
+		.dropdown{
+			a{
+				color: #000;
+			}	
+		}
+	}
+	.nav .open > a, .nav .open > a:hover, .nav .open > a:focus{
+			background-color: $nav-back;
+	}
+}
+.postJob{
+	font-family: $font-family;
+	.instabtn{
+		@include button-insta($primary-color);
+	}
+	a{
+		color: $primary-color;
+	}
+	.angular-google-map-container{
+		height: 30em;
+	}
+	.cname{
+		cursor: pointer;
+		&:hover{
+			color: $primary-color;
+		}
+	}
+	.jobdiv{
+		margin-bottom: 2em;
+		padding: 1em;
+		border-bottom: 1px solid $nav-back;
+	}
+	.datetime{
+		text-transform: italic;
+		color: gray;
+		font-size: small;
+	}
+	.jtitle{
+		color: $primary-color;
+	}
+	.elink{
+		cursor: pointer;
+		&:hover{
+			color: $primary-color;
+		}
+	}
+}
+.allJobs{
+	font-family: $font-family;
+	.jobdiv{
+		background-color: $job-div-back;
+		.desc{
+			min-height: 40em;
+		}
+		width: 20.250em;
+		margin: 0.5em;
+		padding: 1em;
+		&:hover{
+			cursor: pointer;
+			@include shadow();
+		}
+		.title{
+			background-color: $nav-back;
+			min-height: 4em;
+			color: #fff;
+		}
+		.more{
+			color: $primary-color;
+			&:hover{
+				text-decoration: underline;
+			}
+		}
+		.info{
+			color: $info-col;
+			font-weight: bold;
+		}
+	}
+	@media (max-width: 992px){
+		.jobdiv{
+			float: left;
+		}
+	}
+	@media (max-width: 768px){
+		.jobdiv{
+			float: left;
+		}
+	}
+	.datetime{
+		text-transform: italic;
+		color: gray;
+		font-size: small;
+	}
+	@media (min-width: 992px){
+		.col-md-3 {
+		  width: 35%;
+		}
+	}
+	.like{
+		font-size: 20px;
+		background-color: $nav-back;
+		margin-top: -0.7em;
+		span{
+			margin-top: 3em;
+			cursor: pointer;
+			color: #fff;
+			background-color: $primary-color;
+			border-radius: 100%;
+			padding: 0.5em;
+		}
+		img{
+			width: 7em;
+			height: 7em;
+			border-radius: 100%;
+		}
+	}
+	.descdiv{
+	}
+	.matches{
+		padding: 0;
+		padding-right: 1em;
+		border-radius: 0.2em;
+		@include button-alljobs($primary-color);
+		p{
+			float: right;
+			padding-top: 0.6em;
+		}
+	}
+	.savedjobs{
+		border-radius: 0.2em;
+		padding: 0;
+		padding-right: 1em;
+		@include button-alljobs($nav-back);
+		p{
+			float: right;
+			padding-top: 0.6em;
+		}
+	}
+	.matchescount{
+		padding-top: 0.7em;
+		height: 2.7em;
+		width: 3em;
+		color: #fff;
+		float: left;
+		margin-right: 1em;
+		background-color: $primary-color;
+	}
+	.savedjobscount{
+		padding-top: 0.7em;
+		height: 2.7em;
+		width: 3em;
+		color: #fff;
+		float: left;
+		margin-right: 1em;
+		background-color: $nav-back;	
+	}
+}
+.jobsNear{
+	.notif{
+		color: $primary-color;
+	}
+	.instabtn{
+		@include button-insta($primary-color);
+		padding: 0.5em;
+	}
+	font-family: $font-family;
+	.angular-google-map-container{
+		height: 60em;
+	}
+	.head{
+		.col-md-2 {
+			width: 10%;
+		}
+		.settings{
+			padding-top: 1em;
+			.col-md-2 {
+				width: 25%;
+			}	
+		}
+	}
+	.loadinggif{
+		position: absolute;
+		z-index: 89;
+		top: 50%;
+		left: 50%;
+	}
+	.matches{
+		padding: 0;
+		padding-right: 1em;
+		border-radius: 0.2em;
+		@include button-alljobs($primary-color);
+		p{
+			float: right;
+			padding-top: 0.6em;
+		}
+	}
+	.savedjobs{
+		border-radius: 0.2em;
+		padding: 0;
+		padding-right: 1em;
+		@include button-alljobs($nav-back);
+		p{
+			float: right;
+			padding-top: 0.6em;
+		}
+	}
+	.matchescount{
+		padding-top: 0.7em;
+		height: 2.7em;
+		width: 3em;
+		color: #fff;
+		float: left;
+		margin-right: 1em;
+		background-color: $primary-color;
+	}
+	.savedjobscount{
+		padding-top: 0.7em;
+		height: 2.7em;
+		width: 3em;
+		color: #fff;
+		float: left;
+		margin-right: 1em;
+		background-color: $nav-back;	
+	}
+	.mapvbtn{
+		padding: 0.5em;
+		padding-left: 0.8em;
+		padding-right: 1em;
+		margin-left: -0.3em;
+		color: #fff;
+		background-color: $nav-back;
+		border: none;
+	}
+	.listvbtn{
+		padding: 0.5em;
+		color: #fff;
+		background-color: $primary-color;
+		border: none;
+	}
+	.jobs{
+		margin: auto;
+		width: 100%;
+	}
+	.jobdiv{
+		background-color: $job-div-back;
+		.desc{
+			min-height: 33em;
+		}
+		width: 20.250em;
+		margin: 0.5em;
+		padding: 1em;
+		// min-height: 43em;
+		&:hover{
+			cursor: pointer;
+			@include shadow();
+		}
+		.title{
+			color: #fff;
+			min-height: 4em;
+		}
+		.more{
+			color: $primary-color;
+			&:hover{
+				text-decoration: underline;
+			}
+		}
+		.info{
+			color: $info-col;
+			font-weight: bold;
+		}
+	}
+	@media (max-width: 992px){
+		.jobdiv{
+			float: left;
+		}
+	}
+	@media (max-width: 768px){
+		.jobdiv{
+			float: left;
+		}
+	}
+	@media (min-width: 992px){
+		.col-md-3 {
+		  width: 31%;
+		}
+	}
+	.like{
+		font-size: 20px;
+		margin-top: -0.7em;
+		span{
+			margin-top: 3em;
+			cursor: pointer;
+			color: #fff;
+			background-color: $primary-color;
+			border-radius: 100%;
+			padding: 0.5em;
+		}
+		img{
+			width: 7em;
+			height: 7em;
+			border-radius: 100%;
+		}
+	}
+	.descdiv{
+		min-height: 0em;
+	}
+	.infowindow{
+		display: none;
+		text-transform: uppercase;
+		position: absolute;
+		width: 100%;
+		min-height: 30em;
+		z-index: 555989;
+		color: $nav-back;
+		padding: 0.5em 1em;
+		background-color: $job-div-back;
+	}
+}
+.candidates{
+	.candiv{
+		background-color: $job-div-back;
+		.desc{
+			min-height: 25em;
+		}
+		margin: 0.5em;
+		padding: 1em;
+		min-height: 20em;
+		&:hover{
+			cursor: pointer;
+			@include shadow();
+		}
+		.title{
+			background-color: $nav-back;
+			color: #fff;
+		}
+		.like{
+			font-size: 20px;
+			background-color: $nav-back;
+			margin-top: -0.7em;
+			span{
+				margin-top: 3em;
+				cursor: pointer;
+				color: #fff;
+				background-color: $primary-color;
+				border-radius: 100%;
+				padding: 0.5em;
+			}
+			img{
+				width: 7em;
+				height: 7em;
+				border-radius: 100%;
+			}
+		}
+		.info{
+			font-weight: bold;
+			color: $info-col;
+		}
+	}
+}
+.singlejob{
+	.modal-header{
+		background-color: $nav-back;
+		min-height: 18em;
+		span{
+			color: #fff;
+		}
+	}
+	.like{
+		font-size: 20px;
+		background-color: $nav-back;
+		margin-top: -0.7em;
+		span{
+			margin-top: 3em;
+			cursor: pointer;
+			color: #fff;
+			background-color: $primary-color;
+			border-radius: 100%;
+			padding: 0.5em;
+		}
+		img{
+			width: 9em;
+			height: 9em;
+			border-radius: 100%;
+		}
+	}
+	.title{
+		color: #fff;
+	}
+	.modal-body{
+		background-color: $job-div-back;
+		.info{
+			font-weight: bold;
+			color: $info-col;
+		}
+	}
+}
+.profile{
+	.subbtn{
+		@include button-insta($primary-color);
+	}
+	.sidebar{
+		height: 40em;
+		border: 1px solid #C6C6C6;
+		background-color: #EFEFEF;
+		margin-top: -1.4em;
+		a{
+			display: block;
+			color: $nav-back;
+			font-weight: bolder;
+			padding: 1em 2em;
+		}
+		.head{
+			color: #9E9FA1;
+			p{
+				padding: 1em 2em;
+				font-weight: bolder;
+			}
+		}
+		.row{
+			border-bottom: 1px solid #C6C6C6;
+		}
+	}
+	.propic{
+		border-radius: 100%;
+	}
+}
+.modal{
+	.modal-body{
+		.angular-google-map-container{
+			height: 30em;
+		}
+	}
+}
+.footer{
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+	.social{
+		.facebook{
+			background-color: #3b5998;
+			border-radius: 100%;
+			color: #fff;
+			padding: 0.5em;
+			cursor: pointer;
+			i{
+				margin-left: 0.15em;
+			}
+			margin-right: 0.25em;
+		}
+		.linkedin{
+			background-color: #007bb6;
+			border-radius: 100%;
+			color: #fff;
+			cursor: pointer;
+			padding: 0.5em;
+			i{
+				margin-left: 0.025em;
+			}
+			margin-right: 0.25em;
+		}
+		.twitter{
+			background-color: #00aced;
+			border-radius: 100%;
+			color: #fff;
+			cursor: pointer;
+			padding: 0.5em;;
+			i{
+				margin-left: 0.15em;
+			}
+		}
+	}
+	.company{
+		margin-top: 0.5em;
+	}
+	.links{
+		a{
+			color: #000;
+		}
+	}
+}

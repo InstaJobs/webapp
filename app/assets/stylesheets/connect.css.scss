@@ -1,0 +1,210 @@
+.mainNav{
+	min-width: 43.15em;
+}
+.wrap{
+	min-width: 43.15em;
+	background: url("images/homeimg1.jpg") no-repeat;
+	background-size: cover;
+	background-repeat: no-repeat;
+	// background-postion: center;
+	width: auto;
+	margin-top: -1.5em;
+	min-height: 43em;
+	.hiw{
+		text-shadow: 4px 4px 12px rgba(0, 0, 0, 1);
+		color: #fff;
+	}
+	.arrow{
+		color: $primary_color;
+		i{
+			padding: 0.2em;
+			border: 3px solid $primary_color;
+			border-radius: 100%;
+		}
+	}
+	.wrapc{
+		width: 100%;
+		height: 36.5em;
+	}
+	.loginbox{
+		float: right;
+		min-width: 43.15em;
+		width: 43.15em;
+		@include outer-container;
+		.fblogin{
+			width: 17em;
+			padding: 1em 1em 1em 0.5em;
+		}
+		.inlogin{
+			margin-top: 0.4em;
+			float: right;
+			width: 17em;
+			padding: 1em 1em 1em 0.5em;
+		}
+		.btn-social > :first-child{
+			padding-top: 0.3em;
+		}
+		.signupform{
+			padding: 3em;
+			.form-control::-webkit-input-placeholder{
+				font-family: $font_family;
+			}
+			.form-control::-moz-placeholder{
+				font-family: $font_family;
+			}
+			.form-control::-ms-input-placeholder{
+				font-family: $font_family;
+			}
+			.form-control::placeholder{
+				font-family: $font_family;
+			}
+			.submitbtn{
+				@include button-insta($primary_color);
+			}
+			.inlogin{
+				&:hover{
+					color: #fff;
+				}
+			}
+			.fblogin{
+				&:hover{
+					color: #fff;
+				}
+			}
+		}
+		.loginform{
+			display: none;
+			padding: 3em;
+			.form-control::-webkit-input-placeholder{
+				font-family: $font_family;
+			}
+			.form-control::-moz-placeholder{
+				font-family: $font_family;
+			}
+			.form-control::-ms-input-placeholder{
+				font-family: $font_family;
+			}
+			.form-control::placeholder{
+				font-family: $font_family;
+			}
+			.submitbtn{
+				@include button-insta($primary_color);
+			}
+			.inlogin{
+				&:hover{
+					color: #fff;
+				}
+			}
+			.fblogin{
+				&:hover{
+					color: #fff;
+				}
+			}
+		}
+		#forgotbtn{
+			float: right;
+		}
+	}
+}
+.jumbo{
+	border-top: 4px solid $primary_color;
+	.jumbochr{
+		margin: auto;
+		margin-top: 2em;
+		@media (min-width: 992px){
+			.col-md-offset-1 {
+		    margin-left: 11.333333%;
+			}
+		}
+		.jumboch{
+			padding-bottom: 1em;
+			padding-top: 1em;
+			font-style: italic;
+			border: 1px solid $primary_color;
+			border-radius: 2%;
+		}
+		.top{
+			margin: auto;
+			margin-top: -2.9em;
+			z-index: 343;
+			background: #fff;
+			padding: 0.5em;
+			font-style: normal;
+			width: 4.0em;
+			border: 1px solid  $primary_color;
+			border-radius: 100%;
+			p{
+				padding-top: 0.6em;
+			}
+		}
+	}
+}
+.featuredjobs{
+	.hr{
+		text-align: center;
+		img{
+			margin-top: -4.6em;
+		}
+	}
+	.jobs{
+		margin: auto;
+		margin-left: 5em;
+		width: 100%;
+		.jobdiv{
+			background-color: $job-div-back;
+	    	width: 20.250em;
+			.like{
+				font-size: 20px;
+				background-color: $nav-back;
+				margin-top: -0.7em;
+				span{
+					margin-top: 3em;
+					cursor: pointer;
+					color: #fff;
+					background-color: $primary-color;
+					border-radius: 100%;
+					padding: 0.5em;
+				}
+				img{
+					width: 7em;
+					height: 7em;
+					border-radius: 100%;
+				}
+			}
+			margin: 0.5em;
+			padding: 1em;
+			&:hover{
+				cursor: pointer;
+				@include shadow();
+			}
+			.title{
+				background-color: $nav-back;
+				color: #fff;
+				min-height: 4.2em;
+			}
+			.more{
+				color: $primary-color;
+				&:hover{
+					text-decoration: underline;
+				}
+			}
+			.info{
+				color: $info-col;
+				font-weight: bold;
+			}
+			.desc{
+				min-height: 24em;
+			}
+		}
+		@media (max-width: 992px){
+			.jobdiv{
+				float: left;
+			}
+		}
+		@media (max-width: 768px){
+			.jobdiv{
+				float: left;
+			}
+		}
+	}
+}

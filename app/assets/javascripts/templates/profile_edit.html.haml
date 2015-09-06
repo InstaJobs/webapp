@@ -1,0 +1,59 @@
+%div.modal.fade{"tabindex" => -1, "role" => 'dialog', "id" => "myModal", "aria-labelledby" => "myModelLabel"}
+	%div{"class" => "modal-dialog", "role" => "document"}
+		%div{:class => "modal-content"}
+			%div.header{:class => "modal-header", "style" => "background-color:{{selectedj.bgcolor}}"}
+				%button{:type => "button", :class => "close", "data-dismiss" => "modal", "aria-label" => "Close"}
+					%span{"aria-hidden" => "true"}
+						&times;
+			%div{:class => "modal-body"}
+				{{message}}
+.row
+	.col-md-12
+		%h4.text-center
+			Edit Profile
+		%hr
+		.row
+			.col-md-4.text-center
+				.row
+					.col-md-12
+						%img.propic{:src => "{{$root.user_propic}}", :width => "180px", :height=>"180px"}
+				%br
+				.row
+					.col-md-12
+						%div{:class => "btn btn-danger text-center", "ngf-select" => "", "ng-model" => "file", "ngf-accept" => "'image/*'", "accept" => "'image/*'", "ngf-validate" => "{size: {max:'1MB'}}"}
+							%span
+								{{avataruploadbtnval}}
+					.col-md-12{:style => "font-style:italic;color:gray"}
+						File Size <= 1MB
+			.col-md-6
+				%label
+					Name
+				%input.form-control{'ng-model' => 'user.name'}
+				%br
+				%label
+					Bio
+				%textarea.form-control{'ng-model' => 'user.bio'}
+				%br
+				%label
+					Skills
+				%input.form-control{'ng-model' => 'user.skills'}
+		%hr
+		.row
+			.col-md-8.col-md-offset-1
+				%label
+					Email
+				%input.form-control{"ng-model" => "user.email", "ng-disabled" => "true"}
+				%br
+				%label
+					Phone Number
+				%input.form-control{"ng-model" => "user.number", "type" => "number"}
+				-# %br
+				-# %label
+				-# 	Sex
+				-# %input{:type => "radio", "ng-model" => "user.sex", "value" => "male"}
+				-# Male
+				-# %input{:type => "radio", "ng-model" => "user.sex", "value" => "female"}
+				-# Female
+				%br
+				%button.btn.btn-danger{"ng-click" => "update(user)"}
+					Update profile

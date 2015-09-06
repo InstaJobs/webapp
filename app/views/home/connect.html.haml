@@ -1,0 +1,264 @@
+%div.modal.fade{"tabindex" => -1, "role" => 'dialog', "id" => "myModal", "aria-labelledby" => "myModelLabel"}
+	%div{"class" => "modal-dialog", "role" => "document"}
+		%div{:class => "modal-content"}
+			%div.header{:class => "modal-header", "style" => "background-color:{{selectedj.bgcolor}}"}
+				%button{:type => "button", :class => "close", "data-dismiss" => "modal", "aria-label" => "Close"}
+					%span{"aria-hidden" => "true"}
+						&times;
+			%div{:class => "modal-body"}
+				%p{:id => "message"}
+
+=content_for :head do
+	%script{:type => "text/javascript", :src => "//platform.linkedin.com/in.js"}
+		api_key:   75xx0kw3b41lm5
+		authorize: false
+		lang:      en_US
+		scope: 		 r_basicprofile r_emailaddress
+
+.mainNav
+	%nav.navbar{:role => 'navigation'}
+		.navbar-header
+			%a{:href => '#'}
+				%img{:src => 'assets/images/beta-logo.png'}
+			%button.navbar-toggle{'data-toggle' => 'collapse', 'data-target' => '#navbar-collapse'}
+				%span.sr-only
+					Toggle Navigation
+				%span.icon-bar
+				%span.icon-bar
+				%span.icon-bar
+		.navbar-collapse.collapse{'id' => 'navbar-collapse'}
+			%ul.nav.navbar-nav.navbar-right.connectlinks
+				%li
+					%a{'href' => '#', "id" => "signuphref", 'class' => "selected"}
+						Sign Up
+				%li
+					%a{'href' => '#', "id" => "loginhref"}
+						Login
+.wrap
+	.wrapc
+		.loginbox
+			.signupform
+				%a.btn.btn-block.btn-linkedin.btn-social.inlogin
+					%i{:class=> "fa fa-linkedin"}
+					Sign Up with LinkedIn
+				%a.btn.btn-block.btn-facebook.btn-social.fblogin
+					%i{:class=> "fa fa-facebook"}
+					Sign Up with Facebook
+				%hr
+				%form.signupf
+					%input.form-control{:placeholder => 'Name', :name => "name", :required=>""}
+					%br
+					%input.form-control{:type=>"email", :placeholder => 'Email', :name => "email",:required=>""}
+					%br
+					%input.form-control{:type=>"password", :placeholder => 'Password', :name => "password", :required=>""}
+					%br
+					%input.form-control{:type=>"password", :placeholder => 'Confirm your password', :name => "cpassword", :required=>""}
+					%br
+					%button.submitbtn#signupbtn{}
+						Create account
+			.loginform
+				%a.btn.btn-block.btn-social.btn-linkedin.inlogin
+					%i{:class=> "fa fa-linkedin"}
+					Login with Linkedin
+				%a.btn.btn-block.btn-social.btn-facebook.fblogin
+					%i{:class=> "fa fa-facebook"}
+					Login with Facebook
+				%hr
+				%form.loginf
+					%input.form-control{:type=>"email", :placeholder => 'Email', :name => "email", :required=>""}
+					%br
+					%input.form-control{:type=>"password", :placeholder => 'Password', :name => "password", :required=>""}
+					%br
+					%button.submitbtn#loginbtn{}
+						Sign In
+					%button.submitbtn#forgotbtn{}
+						Fogot Password
+	.row.text-center
+		.row
+			.col-md-12
+				%h4.hiw
+					How it Works
+		.row
+			.col-md-12.arrow
+				%i.fa.fa-chevron-down.fa-2x
+.jumbo
+	.row.text-center
+		.col-md-12
+			%h3
+				Temporary Jobs in Three Easy Steps!
+	.row.jumbochr
+		.col-md-3.col-md-offset-1.text-center
+			%div.jumboch
+				%div.top
+					%p
+						1
+				%h3
+					Search
+			%br
+			%p
+				Browse temporary jobs in your area.
+			%br
+		.col-md-3.text-center
+			%div.jumboch
+				%div.top
+					%p
+						2
+				%h3
+					Match
+			%br
+			%p
+				Match the potential positions.
+			%br
+		.col-md-3.text-center
+			%div.jumboch
+				%div.top
+					%p
+						3
+				%h3
+					Connect
+			%br
+			%p
+				Get hired!
+	%br
+	%br
+.featuredjobs
+	%div.hr
+		%hr
+		%img{:src => "/assets/images/logo-only.png", :style => "background-color:#fff"}
+	.row
+		.col-md-12.text-center
+			%h4
+				Featured Jobs
+	.row
+		.jobs
+
+.container.footer
+	.row.text-center
+		.col-md-12.social
+			%a.facebook{:href => "https://www.facebook.com/instajobsnow"}
+				%i{:class => "fa fa-facebook fa-lg"}
+			%a.linkedin{:href => "https://www.linkedin.com/company/insta-jobs"}
+				%i{:class => "fa fa-linkedin fa-lg"}
+	.row.text-center
+		.col-md-12.company
+			InstaJobs &copy; 2015
+	.row.text-center
+		.col-md-12.links
+			%span
+				%a{"href" => "http://www.iubenda.com/privacy-policy/806234", :target => "_blank"}
+					Privacy Policy
+				|
+			%span
+				%a{"href" => "mailto:support@instajobs.io", :target => "_blank"}
+					Send Feedback
+
+#fb-root
+%script{"id" => "jobmodals", "type" => "text/x-handlebars-template"}
+	%div.singlejob.modal.fade{"tabindex" => -1, "role" => 'dialog', "id" => "jobmodal", "aria-labelledby" => "myModelLabel"}
+		%div{"class" => "modal-dialog", "role" => "document"}
+			%div{:class => "modal-content"}
+				%div.header{:class => "modal-header", "style" => "background-color:{{selectedj.bgcolor}}"}
+					%button{:type => "button", :class => "close", "data-dismiss" => "modal", "aria-label" => "Close"}
+						%span{"aria-hidden" => "true"}
+							&times;
+					.row.like
+						.col-md-2.col-md-offset-1
+							%span.glyphicon.glyphicon-thumbs-up
+						.col-md-6.text-center
+							%img{:src => "assets/images/1.jpg"}
+						.col-md-2
+							%span.glyphicon.glyphicon-thumbs-down
+					.row.title
+						.col-md-12.text-center
+							%h4
+								{{title}}
+						.col-md-12.text-center
+							%h5
+								{{address}}
+				%div{:class => "modal-body"}
+					.row
+						.col-md-12
+							%p.info
+								Company
+						.col-md-12
+							{{company_name}}
+					%br
+					.row
+						.col-md-12
+							%p.info
+								Responsibility
+						.col-md-12
+							{{responsibility}}
+					%br
+					.row
+						.col-md-12
+							%p.info
+								Description
+						.col-md-12
+							{{description}}
+					%br
+					.row
+						.col-md-12
+							%p.info
+								Salary - {{salary}}{{hours}}
+					.row
+						.col-md-12.text-center
+							.datetime
+								Created at - {{formatDate created_at day="numeric" month="long" year="numeric"}}
+
+%script{"id" => "jobtemplate", "type" => "text/x-handlebars-template"}
+	.div.jobdiv.col-md-3
+		.row.like
+			.col-md-2
+				%span.glyphicon.glyphicon-thumbs-up
+			.col-md-7.text-center
+				%img{:src => "/assets/images/1.jpg"}
+			.col-md-2
+				%span.glyphicon.glyphicon-thumbs-down
+		.row.title
+			.col-md-12.text-center
+				%h4
+					{{short_title}}
+		.row.desc
+			.col-md-12
+				.row.address
+					.col-md-12
+						%p.info
+							Location
+						%p
+							{{address}}
+				.row.resdiv
+					.col-md-12
+						%p.info
+							Responsibility
+						%p
+							{{short_responsibility}}
+				.row.descdiv
+					.col-md-12
+						%p.info
+							Job Description
+						%p
+							{{short_description}}
+		.row
+			.col-md-12
+				%p.info
+					Salary - {{salary}}{{hours}}
+
+%script{:type => 'text/javascript'}
+	window.fbAsyncInit = function() {
+	FB.init({
+	appId      : '1136739806342246', // App ID
+	status     : true, // check login status
+	cookie     : true, // enable cookies to allow the server to access the session
+	xfbml      : true,  // parse XFBML
+	oauth      : true,
+	version    : 'v2.4',
+	});
+	};
+	(function(d){
+	var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+	if (d.getElementById(id)) {return;}
+	js = d.createElement('script'); js.id = id; js.async = true;
+	js.src = "//connect.facebook.net/en_US/all.js";
+	ref.parentNode.insertBefore(js, ref);
+	}(document));

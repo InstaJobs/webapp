@@ -1,0 +1,52 @@
+%div.mainContent{"style" => "background-color:#EBE9EA; width: 100%"}
+	%p{"style" => "text-align:center"}
+		%img{'src' => 'http://intajobs.com/assets/images/logo-sm.png'}
+	.content{"style" => "background-color:#fff;width: 40em;margin:auto;border-radius:1em;"}
+		%p.head{"style" => "background-color:#0F2938;color:#fff;text-align:center;padding-top:1em;padding-bottom:1em;"}
+			A candidate is interested in your job posting
+		%div{"style" => "text-align:center;margin:auto;width:10em;height:10em;border-radius:100%;border:5px solid #0F2938"}
+			%div.like
+				%img{"src" => "http://intajobs.com/assets/images/logo-only.png", "style" => "margin-top:-1em;background-color:#fff"}
+			%div.user
+				%img{"src" => "#{@thumb}", "style" => "border-radius:100%;float:left;margin-left:-1em;margin-top:1.5em;"}
+			%div.job
+				%img{"src" => "http://intajobs.com/assets/images/png/glyphicons-500-family.png", "style" => "border-radius:100%;float:right;margin-right:-1em;margin-top:2.5em;"}
+			%div.thumb{"style" => "width:2em;height:2em;margin:auto"}
+				%img{"src" => "http://intajobs.com/assets/images/png/glyphicons-344-thumbs-up.png", "style" => "border-radius:100%;margin-top:8em;background-color:#fff;"}
+		%div{:style => "padding-left:1em"}
+			%h2{"style" => "text-decoration:underline;color:#0F2938"}
+				=@job.title
+			%h2{"style" => "color:#0F2938"}
+				=@job.address
+		%div{:style => "padding-left:1em;padding-rigth:1em"}
+			%h3{"style" => "text-decoration:underline;color:#0F2938"}
+				User Details
+			%table{"style" => "margin:auto"}
+				%tr
+					%td{"width" => "150", :style=>"text-align:center"}
+						%img{"src" => "#{@propic}", "style" => "border-radius:100%;float:left;margin-left:-1em;width:\"180px\",height:\"180px\"", "width" => "180px", "height" => "180px"}
+					%td{"width" => "200"}
+						%p
+							Name - 
+							%span{"style" => "color:#0F2938;font-weight:bold"}
+								=@user.name
+						%p
+							Email -
+							%span{"style" => "color:#0F2938;font-weight:bold"}
+								=@user.email
+						%p 
+							Number -
+							%span{"style" => "color:#0F2938;font-weight:bold"}
+								=@user.number
+						%p 
+							Bio -
+							%span{"style" => "color:#0F2938;font-weight:bold"}
+								=@user.bio
+						%p
+							Skills -
+							%span{"style" => "color:#0F2938;font-weight:bold"}
+								=@user.skills
+			%p{:style => "text-align:center"}
+				%a{:href => @link, :style=>"text-decoration:none;background-color:#C11A2F;color:#fff;border-radius:1px;padding:0.5em;"}
+					View Link
+		

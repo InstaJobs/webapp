@@ -1,0 +1,203 @@
+%div.modal.fade{"tabindex" => -1, "role" => 'dialog', "id" => "info", "aria-labelledby" => "myModelLabel"}
+	%div{"class" => "modal-dialog", "role" => "document"}
+		%div{:class => "modal-content"}
+			%div.header{:class => "modal-header", "style" => "background-color:{{selectedj.bgcolor}}"}
+				%button{:type => "button", :class => "close", "data-dismiss" => "modal", "aria-label" => "Close"}
+					%span{"aria-hidden" => "true"}
+						&times;
+			%div{:class => "modal-body"}
+				{{message}}
+%div.singlejob.modal.fade{"tabindex" => -1, "role" => 'dialog', "id" => "myModal", "aria-labelledby" => "myModelLabel"}
+	%div{"class" => "modal-dialog", "role" => "document"}
+		%div{:class => "modal-content"}
+			%div.header{:class => "modal-header", "style" => "background-color:{{selectedj.bgcolor}}"}
+				%button{:type => "button", :class => "close", "data-dismiss" => "modal", "aria-label" => "Close"}
+					%span{"aria-hidden" => "true"}
+						&times;
+				.row.like{"style" => "background-color:{{selectedj.bgcolor}}"}
+					.col-md-2.col-md-offset-1
+						%span.glyphicon.glyphicon-thumbs-up{"ng-click" => "addJob(selectedj)"}
+					.col-md-6.text-center
+						%img{:src => "assets/images/1.jpg"}
+					.col-md-2
+						%span.glyphicon.glyphicon-thumbs-down{"ng-click" => "removeJob(selectedj)"}
+				.row.title
+					.col-md-12.text-center
+						%h4
+							{{selectedj.title}}
+					.col-md-12.text-center
+						%h5
+							{{selectedj.address}}
+			%div{:class => "modal-body"}
+				.row
+					.col-md-12
+						%p.info
+							Company
+					.col-md-12
+						{{selectedj.company_name}}
+				%br
+				.row
+					.col-md-12
+						%p.info
+							Responsibility
+					.col-md-12
+						{{selectedj.responsibility}}
+				%br
+				.row
+					.col-md-12
+						%p.info
+							Description
+					.col-md-12
+						{{selectedj.description}}
+				%br
+				.row
+					.col-md-12
+						%p.info
+							Salary - {{selectedj.salary}}{{selectedj.hours}}
+				.row
+					.col-md-12.text-center
+						.datetime
+							Created at - {{selectedj.created_at | date : 'medium'}}
+.container.jobsNear
+	.row.loadinggif{"ng-show" => "loading"}
+		%img{"src" => "reload.gif"}
+	.row.text-center
+		.col-md-12
+			%h4
+				Jobs Near Me
+	.row.head
+		.col-md-2
+			%button.listvbtn{"ng-click" => "mapv = false"}
+				%i.fa.fa-list.fa-2x
+			%button.mapvbtn{"ng-click" => "mapv = true"}
+				%i.fa.fa-map-marker.fa-2x
+		.col-md-3
+			%button.matches{"ng-click" => "gomatches()"}
+				%div.matchescount
+					%span.glyphicon.glyphicon-user
+					{{$root.user_jobmatch}}
+				%p
+					Matches
+			%button.savedjobs{"ng-click" => "gosavedjobs()"}
+				%div.savedjobscount
+					%span.glyphicon.glyphicon-briefcase
+					{{$root.user_jobcount}}
+				%p
+					Saved Jobs
+		.col-md-6
+			.row.settings
+				.col-md-2
+					%b
+						Radius - {{radius | number:0}} kms
+				.col-md-9
+					%div{"ui-slider" => "slider.options", "min" => "50", "max" => "30000", "ng-model" => "radius"}
+	%br
+	.row
+		.col-md-1.text-right
+			%i.fa.fa-location-arrow.fa-2x
+		.col-md-8
+			%input.form-control{"ng-model" => "address"}
+		.col-md-2
+			%button.instabtn{"ng-click" => "findJobs()"}
+				Find Jobs
+	.row.text-center{"ng-if" => "alljobs"}
+		.col-md-12
+			%h5.notif
+				No jobs nearby, showing All Jobs, Increase the radius to find nearby jobs
+	%br
+	.container{"ng-if" => "mapv"}
+		.row
+			.col-md-8
+				%ui-gmap-google-map{"center" => 'map.center', "zoom" => 'map.zoom'}
+					%ui-gmap-markers{"models" => "jobs", "coords" => "'coords'", "options" => "markers.options", "idKey" => "'idmap'", "events" => "markersEvents"}
+			.col-md-4
+				.jobdiv.infowindow.col-md-3
+					.row.like{"style" => "background-color:{{infowindowjob.bgcolor}}"}
+						.col-md-2
+							%span.glyphicon.glyphicon-thumbs-up{"ng-click" => "addJob(infowindowjob)"}
+						.col-md-7.text-center
+							%img{:src => "assets/images/1.jpg"}
+						.col-md-2
+							%span.glyphicon.glyphicon-thumbs-down{"ng-click" => "removeJob(infowindowjob)"}
+					.row.desc{"ng-click" => "selectedJob(infowindowjob)", "data-toggle" => "modal", "data-target" => "#myModal"}
+						.col-md-12
+							.row.title{"style" => "background-color:{{infowindowjob.bgcolor}}"}
+								.col-md-12.text-center
+									%p
+										{{infowindowjob.title}}
+							.row.company
+								.col-md-12
+									%p.info
+										Company
+									%p
+										{{infowindowjob.company_name}}
+							.row.address
+								.col-md-12
+									%p.info
+										Location
+									%p
+										{{infowindowjob.address}}
+							.row.resdiv
+								.col-md-12
+									%p.info
+										Responsibility
+									%p
+										{{infowindowjob.responsibility}}
+							.row.descdiv
+								.col-md-12
+									%p.info
+										Description
+									%p
+										{{infowindowjob.short_description}}
+					.row
+						.col-md-12
+							%p.info
+								Salary - {{infowindowjob.salary}}{{infowindowjob.hours}}
+	%br
+	.row{"ng-if" => "!mapv"}
+		.jobs
+			.div.jobdiv.col-md-3{"ng-repeat" => "job in jobs track by $index"}
+				.row
+					.col-md-12
+						.row.like{"style" => "background-color:{{job.bgcolor}}"}
+							.col-md-2
+								%span.glyphicon.glyphicon-thumbs-up{"ng-click" => "addJob(job)"}
+							.col-md-7.text-center
+								%img{:src => "assets/images/1.jpg"}
+							.col-md-2
+								%span.glyphicon.glyphicon-thumbs-down{"ng-click" => "removeJob(job)"}
+						.row.desc{"ng-click" => "selectedJob(job)", "data-toggle" => "modal", "data-target" => "#myModal"}
+							.col-md-12
+								.row.title{"style" => "background-color:{{job.bgcolor}}"}
+									.col-md-12.text-center
+										%h4
+											{{job.short_title}}
+								.row.company
+									.col-md-12
+										%p.info
+											Company
+										%p
+											{{job.company_name}}
+								.row.address
+									.col-md-12
+										%p.info
+											Location
+										%p
+											{{job.address}}
+								.row.resdiv
+									.col-md-12
+										%p.info
+											Responsibility
+										%p
+											{{job.short_responsibility}}
+								.row.descdiv
+									.col-md-12
+										%p.info
+											Description
+										%p
+											{{job.short_description}}
+						.row
+							.col-md-12
+								%p.info
+									Salary - {{job.salary}}{{job.hours}}
+

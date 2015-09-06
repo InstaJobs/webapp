@@ -1,0 +1,17 @@
+.container.profile
+	.row
+		.col-md-3.sidebar
+			.row.head
+				.col-md-12
+					%p
+						Your Account
+			.row
+				.col-md-12
+					%a{'ui-sref' => 'profile.edit'}
+						Edit Profile
+			.row
+				.col-md-12
+					%a{'ui-sref' => 'profile.password'}
+						Change Password
+		.col-md-9
+			.row{"ui-view" => ""}

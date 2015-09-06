@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>InstaJobs</title>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= csrf_meta_tags %>
+  <meta name="fragment" content="!">
+  <%= favicon_link_tag '/assets/images/fav.ico' %>
+  <%= render 'layouts/favicon' %>
+<<<<<<< HEAD
+=======
+  <%= javascript_include_tag '//cdn.polyfill.io/v1/polyfill.min.js?features=Intl.~locale.en' %>
+>>>>>>> bfa89435609605e642f9aa70bc9bc485a8c7a364
+  <%= javascript_include_tag '//maps.googleapis.com/maps/api/js?sensor=false' %>
+  <%= yield :head %>
+</head>
+<body>
+	<%= yield %>
+  <%= javascript_include_tag 'application' %>
+</body>
+</html>
+
+

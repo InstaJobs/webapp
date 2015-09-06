@@ -1,0 +1,14 @@
+asset 'angular'
+asset 'angular-route'
+asset 'angular-ui-router'
+asset 'bootstrap'
+asset 'angular-google-maps'
+asset 'underscore'
+asset 'lodash'
+asset 'angular-ui-slider'
+asset 'jquery-ui'
+asset 'bootstrap-social'
+asset 'handlebars'
+asset 'ng-file-upload'
+
+#vim: ft=ruby

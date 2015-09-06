@@ -1,0 +1,45 @@
+%div.modal.fade{"tabindex" => -1, "role" => 'dialog', "id" => "myModal", "aria-labelledby" => "myModelLabel"}
+	%div{"class" => "modal-dialog", "role" => "document"}
+		%div{:class => "modal-content"}
+			%div.header{:class => "modal-header", "style" => "background-color:{{selectedj.bgcolor}}"}
+				%button{:type => "button", :class => "close", "data-dismiss" => "modal", "aria-label" => "Close"}
+					%span{"aria-hidden" => "true"}
+						&times;
+			%div{:class => "modal-body"}
+				{{message}}
+.row
+	.col-md-12
+		%h4.text-center
+			Change Password
+		%hr
+		.row.text-center
+			.col-md-12
+				.row
+					.col-md-4
+						%label
+							Current Password
+					.col-md-6
+						%input.form-control{:type => "password", "ng-model" => "user.oldpassword"}
+			%br
+			%br
+			.col-md-12
+				.row
+					.col-md-4
+						%label
+							New Password
+					.col-md-6
+						%input.form-control{:type => "password", "ng-model" => "user.newpassword"}
+			%br
+			%br
+			.col-md-12
+				.row
+					.col-md-4
+						%label
+							Retype New Password
+					.col-md-6
+						%input.form-control{:type => "password", "ng-model" => "user.renewpassword"}
+			%br
+			%br
+			.col-md-12
+				%button.btn.btn-danger{"ng-click" => "update(user)"}
+					Update password

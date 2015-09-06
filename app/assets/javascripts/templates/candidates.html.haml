@@ -1,0 +1,105 @@
+%div.modal.fade{"tabindex" => -1, "role" => 'dialog', "id" => "info", "aria-labelledby" => "myModelLabel"}
+	%div{"class" => "modal-dialog", "role" => "document"}
+		%div{:class => "modal-content"}
+			%div.header{:class => "modal-header", "style" => "background-color:{{selectedj.bgcolor}}"}
+				%button{:type => "button", :class => "close", "data-dismiss" => "modal", "aria-label" => "Close"}
+					%span{"aria-hidden" => "true"}
+						&times;
+			%div{:class => "modal-body"}
+				{{message}}
+%div.singlejob.modal.fade{"tabindex" => -1, "role" => 'dialog', "id" => "myModal", "aria-labelledby" => "myModelLabel"}
+	%div{"class" => "modal-dialog", "role" => "document"}
+		%div{:class => "modal-content"}
+			%div.header{:class => "modal-header", "style" => "background-color:{{selectedc.bgcol}}"}
+				%button{:type => "button", :class => "close", "data-dismiss" => "modal", "aria-label" => "Close"}
+					%span{"aria-hidden" => "true"}
+						&times;
+				.row.like{"style" => "background-color:{{selectedc.bgcol}}"}
+					.col-md-2.col-md-offset-1
+						%span.glyphicon.glyphicon-thumbs-up{"ng-click" => "match(selectedc)"}
+					.col-md-6.text-center
+						%img{:src => "{{selectedc.propic}}"}
+					.col-md-2
+						%span.glyphicon.glyphicon-thumbs-down{"ng-click" => "removeMatch(selectedc)"}
+				.row.title
+					.col-md-12.text-center
+						%h4
+							{{selectedc.name}}
+			%div{:class => "modal-body"}
+				.row
+					.col-md-12
+						%p.info
+							Email
+					.col-md-12
+						{{selectedc.email}}
+				%br
+				.row
+					.col-md-12
+						%p.info
+							Number
+					.col-md-12
+						{{selectedc.number}}
+				%br
+				.row
+					.col-md-12
+						%p.info
+							Bio
+					.col-md-12
+						{{selectedc.bio}}
+				%br
+				.row
+					.col-md-12
+						%p.info
+							Skills
+					.col-md-12
+						{{selectedc.skills}}
+	
+.container.candidates
+	.row
+		.col-md-12.text-center
+			%h4
+				Candidates Liked {{job.title}}
+	.row
+		.col-md-12.col-md-offset-1
+			.div.candiv.col-md-3{"ng-repeat" => "candidate in candidates track by $index"}
+				.row
+					.col-md-12
+						.row.like{:style => "background-color:{{candidate.bgcol}}"}
+							.col-md-2
+								%span.glyphicon.glyphicon-thumbs-up{"ng-click" => "match(candidate)"}
+							.col-md-7.text-center
+								%img{:src => "{{candidate.propic}}"}
+							.col-md-2
+								%span.glyphicon.glyphicon-thumbs-down{"ng-click" => "removeMatch(candidate)"}
+						.row.desc{"ng-click" => "selectedCandidate(candidate)", "data-toggle" => "modal", "data-target" => "#myModal"}
+							.col-md-12
+								.row.title{:style => "background-color:{{candidate.bgcol}}"}
+									.col-md-12.text-center
+										%h4
+											{{candidate.name}}
+								.row.descdiv
+									.col-md-12
+										%p.info
+											Email
+										%p
+											{{candidate.email}}
+								.row.descdiv
+									.col-md-12
+										%p.info
+											Number
+										%p
+											{{candidate.number}}
+								.row.descdiv
+									.col-md-12
+										%p.info
+											Bio
+										%p
+											{{candidate.bio}}
+								.row.descdiv
+									.col-md-12
+										%p.info
+											Skills
+										%p
+											{{candidate.skills}}
+
+
