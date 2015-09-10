@@ -10,8 +10,12 @@ do ->
 		$scope.lat = null;
 		$scope.lng = null;
 		$scope.editjob = {};
-		$scope.map = {};
-		$scope.emap = {};
+		$scope.map = {
+			zoom : 8
+		};
+		$scope.emap = {
+			zoom : 8
+		};
 		$scope.newjob = {};
 		$scope.editjob = null;
 		$scope.marker = {
@@ -98,37 +102,47 @@ do ->
 		showPosition = (position) ->
 			$scope.lat = position.coords.latitude;
 			$scope.lng = position.coords.longitude;
-			$scope.map = {
-				center: { latitude: $scope.lat, longitude: $scope.lng};
-			};
+			$scope.map.center = { latitude: $scope.lat, longitude: $scope.lng};
 			$scope.marker.coord =  {latitude: $scope.lat, longitude: $scope.lng}; 
 			$scope.$apply();
 			return true
-
-		$scope.$watchCollection 'marker.coord', -> 
-			$scope.lat = $scope.marker.coord.latitude
-			$scope.lng = $scope.marker.coord.longitude
-			$scope.map.center = {latitude: $scope.lat, longitude: $scope.lng};
-			$http({url: '/getaddress', params: {lat: $scope.lat, lng: $scope.lng}}).then (response) ->
-				$scope.newjob.address = response.data.result
-
-		$scope.$watchCollection 'emarker.coord', -> 
-			if $scope.editjob
-				$scope.editjob.lat = $scope.emarker.coord.latitude
-				$scope.editjob.lng = $scope.emarker.coord.longitude
-				$scope.emap.center = {latitude: $scope.editjob.lat, longitude: $scope.editjob.lng};
-				$http({url: '/getaddress', params: {lat: $scope.editjob.lat, lng: $scope.editjob.lng}}).then (response) ->
-					$scope.editjob.address = response.data.result
-
-		$scope.toggleLatLng = () ->
-			if(navigator.geolocation)
-				navigator.geolocation.getCurrentPosition(showPosition);
-			else
-				alert("Browser not supported");
-			return true
-
-		$scope.toggleLatLng();
 		
+		showPositionOnEdit = (position) ->                                                                                                 
+                        $scope.lat = position.coords.latitude;                                                                               
+                        $scope.lng = position.coords.longitude;                                                                              
+                        $scope.emap.center = { latitude: $scope.lat, longitude: $scope.lng};                                                  
+                        $scope.emarker.coord =  {latitude: $scope.lat, longitude: $scope.lng};                                                
+                        $scope.$apply();                                                                                                     
+                        return true   	
+	
+		$scope.toggleLatLng = () ->                                                                                                  
+                        if(navigator.geolocation)                                                                                            
+                                navigator.geolocation.getCurrentPosition(showPosition);                                                      
+                        else                                                                                                                 
+                                alert("Browser not supported");                                                                              
+                        return true                                                                                                          
+                                                                                                                                             
+                $scope.toggleLatLng();   
+
+		$scope.$watchCollection 'marker.coord',(newValue, oldValue) -> 
+			if(oldValue != newValue)
+				$scope.lat = $scope.marker.coord.latitude
+				$scope.lng = $scope.marker.coord.longitude
+				$scope.map.center = {latitude: $scope.lat, longitude: $scope.lng};
+				$http({url: '/getaddress', params: {lat: $scope.lat, lng: $scope.lng}}).then (response) -> 
+					if response.data.result? 
+						$scope.newjob.address = response.data.result
+
+		$scope.$watchCollection 'emarker.coord', (newValue, oldValue) -> 
+			if oldValue != newValue
+				if $scope.editjob
+					$scope.editjob.lat = $scope.emarker.coord.latitude
+					$scope.editjob.lng = $scope.emarker.coord.longitude
+					$scope.emap.center = {latitude: $scope.editjob.lat, longitude: $scope.editjob.lng};
+					$http({url: '/getaddress', params: {lat: $scope.editjob.lat, lng: $scope.editjob.lng}}).then (response) ->
+						if response.data.result?
+							$scope.editjob.address = response.data.result
+
 		$scope.edit = (job) ->
 			$timeout ()->
 				$scope.modalshow = true
@@ -141,10 +155,11 @@ do ->
 
 		$scope.etoggleLatLng = () ->
 			if(navigator.geolocation)
-				navigator.geolocation.getCurrentPosition(showPosition);
+				navigator.geolocation.getCurrentPosition(showPositionOnEdit);
 			else
 				alert("Browser not supported");
 			return true
+
 		$scope.updateJob = (editjob) ->
 			editjob.lat = $scope.editjob.lat;
 			editjob.lng = $scope.editjob.lng;
@@ -171,16 +186,19 @@ do ->
 
 		$scope.getLatLngfAdd = (address) ->
 			$http({url: '/getlatlng', method: 'GET', params: {address: address}}).then (response) ->
-				$scope.lat = response.data.result[0];
-				$scope.lng = response.data.result[1];
-				$scope.map.center = {latitude: $scope.lat, longitude: $scope.lng};
-				$scope.marker.coord = {latitude: $scope.lat, longitude: $scope.lng};
+				if response.data.result[0]? && response.data.result[1]?
+					$scope.lat = response.data.result[0];
+					$scope.lng = response.data.result[1];
+					$scope.map.center = {latitude: $scope.lat, longitude: $scope.lng};
+					$scope.marker.coord = {latitude: $scope.lat, longitude: $scope.lng};
+		
 		$scope.egetLatLngfAdd = (address) ->
 			$http({url: '/getlatlng', method: 'GET', params: {address: address}}).then (response) ->
-				$scope.editjob.lat = response.data.result[0];
-				$scope.editjob.lng = response.data.result[1];
-				$scope.emap.center = {latitude: $scope.editjob.lat, longitude: $scope.editjob.lng};
-				$scope.emarker.coord = {latitude: $scope.editjob.lat, longitude: $scope.editjob.lng};
+				if response.data.result[0]? && response.data.result[1]?	
+					$scope.editjob.lat = response.data.result[0];
+					$scope.editjob.lng = response.data.result[1];
+					$scope.emap.center = {latitude: $scope.editjob.lat, longitude: $scope.editjob.lng};
+					$scope.emarker.coord = {latitude: $scope.editjob.lat, longitude: $scope.editjob.lng};
 		return
 	]
 	return
