@@ -12,8 +12,8 @@ $(document).ready () ->
 			template = Handlebars.compile(source);
 			for j in response
 				if j.title
-					if(j.title.length > 50)
-						j.short_title = j.title.substring(0, 50)+".."
+					if(j.title.length > 30)
+						j.short_title = j.title.substring(0, 30)+".."
 					else
 						j.short_title = j.title
 				if j.description
