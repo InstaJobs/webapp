@@ -39,7 +39,7 @@
 										%ui-gmap-marker{"coords" => "emarker.coord", "options" => "emarker.options", "events" => "emarker.events", "idkey"=>"1", "draggable" => true}
 							.row
 								.col-md-12.text-center
-									%p		
+									%p
 										Use your current location, or enter an address and click the Get Location button.
 							.row
 								.col-md-9
@@ -123,15 +123,15 @@
 						-# 			%p{"ng-show" => 'autoloc'}
 						-# 				Longitutde : {{lng}}
 						%br
-						.row
+							.row
 								.col-md-12
-								%ui-gmap-google-map{"center" => 'map.center', "zoom" => "map.zoom"}
+									%ui-gmap-google-map{"center" => 'map.center', "zoom" => "map.zoom"}
 									%ui-gmap-marker{"coords" => "marker.coord", "options" => "marker.options", "events" => "marker.events", "idkey"=>"1", "draggable" => true}
 						%br
 							.row
 								.col-md-12.text-center
 									%p
-										Use your current location, or enter an address and click the Get Location button. 
+										Use your current location, or enter an address and click the Get Location button.
 								.col-md-9
 									%input.form-control{"ng-model" => "newjob.address", "placeholder" => "Address", "type "=> "text"}
 								.col-md-3
