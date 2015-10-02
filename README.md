@@ -23,6 +23,7 @@ To build local : (If it doesn't work report the issue, and fix if you got one, o
 - copy this [file](https://www.dropbox.com/s/x2mf8os6irdbz11/mongoid.yml?dl=0) in /config/mongoid.yml 
 - sidekiq -c config/sidekiq.yml
 - unicorn -c config/unicorn.rb
+- Run https://github.com/javan/whenever to create the cron job and schedule it
 
 ## Development and Deployment
 
